@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export function NavBar() {
+export default function NavBar() {
   return (
     <nav className='py-5 px-5 text-2xl'>
       <ul className='flex justify-end gap-5'>
