@@ -12,7 +12,8 @@
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
     "db:clear": "tsx prisma/clear.ts",
-    "data:analyze": "tsx prisma/typeAnalysis.ts"
+    "data:analyze": "tsx prisma/typeAnalysis.ts",
+    "data:clean": "tsx prisma/dataCleaner.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
