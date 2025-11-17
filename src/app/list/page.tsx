@@ -1,20 +1,14 @@
 import { chinguService } from '../../features/chingu/chingu.service';
 import { ChinguType } from '../../features/chingu/chingu.type';
+import { columns } from "./columns"
+import { DataTable } from "./data-table"
 
 export default async function ListPage() {
-  const chingus = await chinguService.getAllChingus({ limit: 10 });
+  const chingus: ChinguType[] = await chinguService.getAllChingus({ limit: 50 });
 
   return (
-    <div>
-      <h1>List Page</h1>
-      {chingus.map((chingu: ChinguType) => (
-        <div key={chingu.id} className='flex gap-5'>
-          <p>{chingu.countryName} {chingu.countryCode}</p>
-          <p>{chingu.gender}</p>
-          <p>{chingu.goal}</p>
-          <p>{chingu.source}</p>
-        </div>
-      ))}
+    <div className="container mx-auto py-10">
+      <DataTable columns={columns} data={chingus} />
     </div>
-  );
+  )
 }
