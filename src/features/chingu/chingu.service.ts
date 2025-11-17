@@ -1,5 +1,5 @@
 import prisma from '../../db';
-import { ChinguQueryOptions, ChinguType } from './chingu.type';
+import { ChinguQueryOptions, ChinguType, ChinguCountryStats } from './chingu.type';
 
 export const chinguService = {
   getAllChingus: async (
@@ -41,4 +41,17 @@ export const chinguService = {
       throw new Error('Failed to retrieve chingus: Unknown error');
     }
   },
+  getCountsByCountry: async (): Promise<ChinguCountryStats[]> => {
+    const rows = await prisma.chingu.groupBy({
+      by: ['countryName', 'countryCode'],
+      _count: { _all: true },
+      orderBy: [{ _count: { countryName: 'desc' } }]
+    });
+
+    return rows.map((r) => ({
+      countryName: r.countryName,
+      countryCode: r.countryCode,
+      count: r._count._all
+    }));
+  }
 };
