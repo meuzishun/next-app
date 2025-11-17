@@ -1,6 +1,18 @@
 import fs from 'fs';
-
 import prisma from '../src/db';
+
+const displayNamesCache = new Map<string, Intl.DisplayNames>();
+
+export function getCountryName(code?: string, locale = 'en'): string {
+  if (!code) return 'Unknown';
+  const normalized = code.toUpperCase();
+  let dn = displayNamesCache.get(locale);
+  if (!dn) {
+    dn = new Intl.DisplayNames([locale], { type: 'region' });
+    displayNamesCache.set(locale, dn);
+  }
+  return dn.of(normalized as any) ?? normalized;
+}
 
 export type RawChinguEntry = {
   Timestamp: string;
@@ -37,7 +49,7 @@ async function main() {
               ? null
               : new Date(entry.Timestamp.replace(/\s+/g, ' ').trim()),
         gender: entry.Gender || null,
-        countryCode: entry['Country Code'] || null,
+        countryCode: entry['Country Code'] === 'Philippines (PH)' ? 'PH' : entry['Country Code'] || null,
         timezone: entry.Timezone || null,
         goal: entry.Goal || null,
         goalOther:
@@ -45,7 +57,7 @@ async function main() {
         source: entry.Source || null,
         sourceOther:
           entry['Source-Other'] == null ? null : String(entry['Source-Other']),
-        countryName: entry['Country name (from Country)'] || null,
+        countryName: getCountryName(entry['Country Code']) || null,
         soloProjectTier: entry['Solo Project Tier'] || null,
         roleType: entry['Role Type'] || null,
         voyageRole: entry['Voyage Role'] || null,
