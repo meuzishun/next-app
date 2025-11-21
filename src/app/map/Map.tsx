@@ -8,11 +8,11 @@ import { useCountryStats } from '@/hooks/useCountryStats';
 import geo from 'countries-cities-geo';
 import { ChinguCountryStats } from '@/features/chingu/chingu.type';
 
-export function getCountryCoords(countryCode) {
+export function getCountryCoords(countryCode: string | null) {
   const countries = geo.getCountries();
 
   const country = countries.find(
-    (c) => c.cca2.toUpperCase() === countryCode.toUpperCase()
+    (c: any) => c.cca2.toUpperCase() === countryCode?.toUpperCase()
   );
 
   if (!country || !country.latlng) {
