@@ -40,7 +40,7 @@ export default function Map() {
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current as HTMLElement,
       center: [-71.1252, 42.4756],
-      zoom: 9,
+      zoom: 1,
     });
 
     countryStats.forEach((stat) => {
