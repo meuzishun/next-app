@@ -4,15 +4,27 @@ import { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useCountryStats } from '@/hooks/useCountryStats';
-// @ts-ignore
+// @ts-expect-error library has no types package
 import geo from 'countries-cities-geo';
 import { ChinguCountryStats } from '@/features/chingu/chingu.type';
 
-export function getCountryCoords(countryCode: string | null) {
+interface GeoCountry {
+  cca2: string;
+  latlng?: [number, number];
+}
+
+interface CountryCoords {
+  lat: number;
+  lng: number;
+}
+
+export function getCountryCoords(
+  countryCode: string | null
+): CountryCoords | null {
   const countries = geo.getCountries();
 
   const country = countries.find(
-    (c: any) => c.cca2.toUpperCase() === countryCode?.toUpperCase()
+    (c: GeoCountry) => c.cca2.toUpperCase() === countryCode?.toUpperCase()
   );
 
   if (!country || !country.latlng) {
@@ -72,11 +84,10 @@ export default function Map() {
 
       el.textContent = String(stat.count);
 
-      // @ts-ignore
-      const { lat, lng } = getCountryCoords(stat.countryCode);
-      if (lat && lng) {
+      const coords = getCountryCoords(stat.countryCode);
+      if (coords) {
         new mapboxgl.Marker({ element: el })
-          .setLngLat([lng, lat])
+          .setLngLat([coords.lng, coords.lat])
           .addTo(mapRef.current!);
       }
     });
