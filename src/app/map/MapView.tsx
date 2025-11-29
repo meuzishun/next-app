@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { ChinguCountryStats } from '@/features/chingu/chingu.type';
@@ -11,21 +11,22 @@ interface MapViewType {
 }
 
 export default function MapView({ countryStats }: MapViewType) {
-  const mapRef = useRef<mapboxgl.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const [map, setMap] = useState<mapboxgl.Map | null>(null);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN as string;
-    mapRef.current = new mapboxgl.Map({
+    const m = new mapboxgl.Map({
       container: mapContainerRef.current as HTMLElement,
       center: [-71.1252, 42.4756],
       zoom: 5,
     });
+    setMap(m);
 
     return () => {
-      mapRef.current?.remove();
+      m.remove();
     };
   }, []);
 
@@ -33,11 +34,7 @@ export default function MapView({ countryStats }: MapViewType) {
     <div className="relative h-full w-full">
       <div id="map-container" className="h-full w-full" ref={mapContainerRef} />
       {countryStats?.map((country) => (
-        <Marker
-          key={country.countryCode}
-          map={mapRef.current}
-          country={country}
-        />
+        <Marker key={country.countryCode} map={map} country={country} />
       ))}
     </div>
   );
