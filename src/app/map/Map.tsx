@@ -1,8 +1,10 @@
 'use client';
 
+import CountryList from './CountryList';
 import { CountryRoles } from './CountryRoles';
 import MapView from './MapView';
 import { useCountryStats } from '@/hooks/useCountryStats';
+import { ViewToggle } from './ViewToggle';
 
 function Map() {
   const {
@@ -27,8 +29,10 @@ function Map() {
           </span>
         </div>
       )}
+      <ViewToggle />
       <MapView countryStats={countryStats} />
       <CountryRoles />
+      <CountryList countryStats={countryStats} />
     </>
   );
 }
