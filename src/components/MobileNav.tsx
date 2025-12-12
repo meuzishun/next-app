@@ -16,10 +16,13 @@ import {
 function MobileNav() {
   return (
     <Sheet>
-      <SheetTrigger className="text-chingu-green-100 block md:hidden">
+      <SheetTrigger className="block md:hidden text-chingu-green-100">
         <Menu />
       </SheetTrigger>
-      <SheetContent side="right" className="w-auto h-fit pt-6 pb-4 px-6">
+      <SheetContent
+        side="right"
+        className="w-auto h-fit py-6 px-6 mx-4 my-4 rounded-xl bg-chingu-blue-500 text-chingu-green-100 border-0"
+      >
         <SheetHeader className="p-0 m-0">
           <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
         </SheetHeader>
