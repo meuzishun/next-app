@@ -22,8 +22,8 @@ export default function Home() {
     //   </div>
     // </div>
     <div className="flex-1">
-      <div className="bg-black w-full flex md:justify-center">
-        <div className="flex w-full md:w-auto gap-2 items-center p-1">
+      <div className="bg-chingu-green-500 w-full flex md:justify-center">
+        <div className="flex w-full md:w-auto gap-2 items-center p-2">
           <Filter />
           <SearchBar />
         </div>
