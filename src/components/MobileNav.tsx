@@ -16,7 +16,7 @@ import {
 function MobileNav() {
   return (
     <Sheet>
-      <SheetTrigger className="block md:hidden">
+      <SheetTrigger className="text-chingu-green-100 block md:hidden">
         <Menu />
       </SheetTrigger>
       <SheetContent side="right" className="w-auto h-fit pt-6 pb-4 px-6">

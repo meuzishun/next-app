@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 function Header() {
   return (
-    <header className="flex flex-row justify-between items-center py-3 pl-3 pr-5">
+    <header className="bg-chingu-green-600 flex flex-row justify-between items-center py-3 pl-3 pr-5 border-b border-chingu-green-400">
       <Logo />
       <MobileNav />
       <Navbar />
