@@ -5,10 +5,10 @@ function Logo() {
   return (
     <Link href="/">
       <Image
-        src="/images/logo.png"
+        src="/images/logo.webp"
         alt="Logo"
-        width={100}
-        height={100}
+        width={32}
+        height={32}
         loading="eager"
       />
     </Link>
