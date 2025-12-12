@@ -1,7 +1,10 @@
+'use client';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useUIView } from '@/stores/useUIViewStore';
 
 function Logo() {
+  const { showHomeView } = useUIView();
+
   return (
     <Link href="/">
       <Image
