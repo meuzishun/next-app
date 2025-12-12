@@ -8,7 +8,7 @@ import {
 export default function Navbar() {
   return (
     <NavigationMenu className="hidden md:block">
-      <NavigationMenuList className="gap-3">
+      <NavigationMenuList className="gap-3 text-chingu-green-100">
         <NavigationMenuItem>
           <NavigationMenuLink className="px-4" href="/">
             Home
