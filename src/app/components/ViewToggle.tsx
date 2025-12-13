@@ -1,21 +1,23 @@
+'use client';
 import { Map, List } from 'lucide-react';
-import { useShowCountryList } from '@/stores/useShowCountryList';
+import { useUIView } from '@/stores/useUIViewStore';
 
-export function ViewToggle() {
-  const { isCountryListDisplayed, showCountryList, hideCountryList } =
-    useShowCountryList();
+export const ViewToggle = () => {
+  const { currentView, showListView, showMapView } = useUIView();
 
   const handleChange = () => {
-    if (isCountryListDisplayed) hideCountryList();
-    else showCountryList();
+    if (currentView === 'list') showMapView();
+    else showListView();
   };
 
+  if (currentView === 'home') return;
+
   return (
-    <label className="flex items-center w-16 h-8 cursor-pointer select-none bg-gray-300 rounded-full p-0.5 absolute top-16 z-100 left-1/2 -translate-x-1/2">
+    <label className="flex items-center w-16 h-8 cursor-pointer select-none bg-gray-300 rounded-full p-0.5 absolute top-26 z-20 left-1/2 -translate-x-1/2">
       {/* The checkbox */}
       <input
         type="checkbox"
-        checked={isCountryListDisplayed}
+        checked={currentView === 'list'}
         onChange={handleChange}
         className="peer appearance-none w-full h-full rounded-full"
       />
@@ -30,4 +32,4 @@ export function ViewToggle() {
       <List className="absolute right-2 h-4 w-4 text-black z-10 transition-opacity opacity-50 peer-checked:opacity-100" />
     </label>
   );
-}
+};
