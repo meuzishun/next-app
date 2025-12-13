@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { Button } from '@/components/ui/button';
 import { useUIView } from '@/stores/useUIViewStore';
@@ -14,10 +15,11 @@ export const Hero = () => {
       </h1>
       <Button
         onClick={showMapView}
-        className="rounded-full text-lg px-6 py-5 bg-gray-600 text-white"
+        className="rounded-full text-lg px-6 py-5 --color-primary --color-primary-foreground hover:text-[125%] hover:cursor-pointer"
       >
         Explore Now
       </Button>
     </div>
   );
 };
+
