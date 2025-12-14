@@ -12,6 +12,8 @@ import { useMemo } from 'react';
 import { countBy } from '@/lib/count';
 import { getCountryData } from '@/lib/geo';
 import { useFilteredChingus } from '@/hooks/useFilteredChingus';
+import { ChevronRight } from 'lucide-react';
+import { Users } from 'lucide-react';
 
 export const CountryList = () => {
   const { filteredChingus } = useFilteredChingus();
@@ -42,33 +44,42 @@ export const CountryList = () => {
         <DialogHeader className="sr-only">
           <DialogTitle>Countries</DialogTitle>
         </DialogHeader>
-        <div className="overflow-y-auto flex-1 flex flex-col gap-2 scrollbar-hide rounded-2xl pb-48">
+        <div className="overflow-y-auto flex-1 flex flex-col gap-1 scrollbar-hide rounded-2xl pb-48">
           {countryCounts?.map(([country, count]) => {
             const countryData = getCountryData(country);
 
             return (
               <div
                 key={country}
-                className="bg-white rounded-2xl p-4"
+                className="bg-black border border-chingu-green-400 text-white rounded-3xl px-4 py-3"
                 onClick={() => handleCountryClick(country)}
               >
-                <div className="flex flex-row gap-2 items-center">
-                  <div className="border rounded-full p-2 bg-secondary">
-                    {countryData ? (
-                      <ReactCountryFlag
-                        countryCode={countryData.cca2 || countryData.cca3}
-                        svg
-                        style={{
-                          fontSize: '1.6rem',
-                          lineHeight: '1.6rem',
-                        }}
-                      />
-                    ) : null}
+                <div className="flex flex-row gap-2 items-center justify-between">
+                  <div className="flex gap-2">
+                    <div className="bg-chingu-green-600 rounded-full p-2 w-12 h-12 flex items-center justify-center">
+                      {countryData ? (
+                        <ReactCountryFlag
+                          countryCode={countryData.cca2 || countryData.cca3}
+                          svg
+                          style={{
+                            fontSize: '1.6rem',
+                            lineHeight: '1.6rem',
+                          }}
+                        />
+                      ) : null}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">{country}</h3>
+                      <p className="text-sm flex gap-4">
+                        Chingus{' '}
+                        <span className="text-chingu-green-100 font-semibold flex items-center gap-1">
+                          <Users size={16} strokeWidth={3} />
+                          {count}
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl">{country}</h3>
-                    <p>{count} Chingus</p>
-                  </div>
+                  <ChevronRight className="text-chingu-green-300" />
                 </div>
               </div>
             );
