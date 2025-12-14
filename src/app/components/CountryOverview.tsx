@@ -36,7 +36,7 @@ export const CountryOverview = () => {
 
   return (
     <Dialog open={!!selectedCountry} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[425px] fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-green-600 border-chingu-green-300 rounded-3xl [&>button]:text-chingu-green-100">
+      <DialogContent className="sm:max-w-[425px] h-[75vh] flex flex-col fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-green-600 border-chingu-green-300 rounded-3xl [&>button]:text-chingu-green-100">
         <DialogHeader className="gap-4 flex flex-row items-center">
           <div className="rounded-full p-2 bg-chingu-green-600">
             {countryData?.cca2 || countryData?.cca3 ? (
@@ -92,7 +92,7 @@ export const CountryOverview = () => {
             </div>
           </div>
         ) : null}
-        <div className="max-h-[270px] flex gap-4 flex-col overflow-auto scrollbar-hide">
+        <div className="flex gap-4 flex-col overflow-auto scrollbar-hide flex-1">
           {Object.entries(stats.counts).map(([category, counts]) => {
             if (category in filters) return null;
             const hasAnyCounts = Object.values(counts).some((val) => val > 0);
@@ -113,13 +113,15 @@ export const CountryOverview = () => {
                   return (
                     <div key={key} className="flex flex-col gap-1 mb-2">
                       <div className="flex flex-row justify-between">
-                        <p className="truncate text-white flex items-center gap-2">
-                          {key}{' '}
-                          <span className="flex items-center gap-2 text-chingu-green-200">
+                        <div className="flex gap-2">
+                          <p className="truncate text-white flex items-center gap-2 max-w-50">
+                            {key}
+                          </p>
+                          <p className="flex items-center gap-2 text-chingu-green-200">
                             <Users size={16} strokeWidth={3} />
                             {val}
-                          </span>
-                        </p>
+                          </p>
+                        </div>
                         <p className="text-sm text-white">
                           {percentOfFiltered.toFixed()}%
                         </p>
@@ -137,7 +139,9 @@ export const CountryOverview = () => {
         </div>
 
         <DialogFooter className="pt-8">
-          {/* <Button className="flex grow bg-[#444]">View Chingus</Button> */}
+          <Button className="flex grow bg-chingu-green-200 text-black rounded-full">
+            View Chingus
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
