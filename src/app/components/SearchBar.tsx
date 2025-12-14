@@ -86,23 +86,25 @@ export const SearchBar = () => {
         <input
           type="search"
           placeholder="Search Country"
-          className="w-full rounded-full bg-white px-4 py-1 pr-10 text-black md:w-96"
+          className="w-full rounded-full px-4 py-1 pr-10 bg-chingu-green-600 border border-chingu-green-300 focus:border-chingu-green-100 focus:outline-none text-white md:w-96 placeholder:text-chingu-green-300"
           value={searchValue}
           onChange={handleSearchChange}
           onKeyDown={handleKeyDown}
         />
-        <Search className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+        <Search className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-chingu-green-300" />
 
         {areResultsOpen && (
-          <div className="absolute mt-1 max-h-60 w-full overflow-y-auto rounded-md border bg-white p-1 shadow-md z-50">
+          <div className="absolute mt-1 max-h-60 w-full overflow-y-auto rounded-md border border-chingu-green-400 bg-chingu-green-600 p-1 shadow-md z-50 text-chingu-green-100">
             {filteredResults.map((countryName, index) => (
               <div
                 key={countryName}
                 ref={(el) => {
                   resultRefs.current[index] = el;
                 }}
-                className={`cursor-pointer rounded px-2 py-1 ${
-                  selectedIndex === index ? 'bg-blue-100' : 'hover:bg-gray-100'
+                className={`cursor-pointer rounded px-2 py-1  ${
+                  selectedIndex === index
+                    ? 'bg-chingu-blue-500'
+                    : 'hover:bg-chingu-green-500'
                 }`}
                 onClick={() => selectCountry(countryName)}
               >
