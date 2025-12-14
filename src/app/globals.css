@@ -146,8 +146,12 @@
   }
 }
 
+.progress-track {
+  @apply bg-chingu-green-500;
+}
+
 .progress-track > div {
-  @apply bg-sidebar-ring;
+  @apply bg-chingu-green-300;
 }
 
 @layer utilities {
