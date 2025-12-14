@@ -31,7 +31,7 @@ export const About = () => {
         </CardContent>
         <CardAction className="self-center">
           <Link href="https://www.chingu.io/">
-            <Button className="rounded-full text-lg px-10 py-6 bg-transparent text-white self-center border-white border-2">
+            <Button className="rounded-full text-lg px-10 py-6 bg-transparent text-white self-center border-white border-2 hover:bg-transparent">
               Learn More
             </Button>
           </Link>
@@ -53,7 +53,7 @@ export const About = () => {
         <CardAction className="self-center">
           <Button
             onClick={showMapView}
-            className="rounded-full text-lg text-black px-10 py-6 bg-chingu-green-100"
+            className="rounded-full text-lg text-black px-10 py-6 bg-chingu-green-100 hover:bg-chingu-green-100"
           >
             Explore Now
           </Button>

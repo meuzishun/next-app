@@ -14,7 +14,7 @@ export const Hero = () => {
       </h1>
       <Button
         onClick={showMapView}
-        className="rounded-full text-lg text-black px-10 py-6 bg-chingu-green-100"
+        className="rounded-full text-lg text-black px-10 py-6 bg-chingu-green-100 hover:bg-chingu-green-100"
       >
         Explore Now
       </Button>
