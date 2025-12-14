@@ -15,6 +15,7 @@ import ReactCountryFlag from 'react-country-flag';
 import { getCountryData } from '@/lib/geo';
 import { X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Users } from 'lucide-react';
 
 export const CountryOverview = () => {
   const { selectedCountry, setSelectedCountry } = useSelectedCountry();
@@ -35,9 +36,9 @@ export const CountryOverview = () => {
 
   return (
     <Dialog open={!!selectedCountry} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[425px] fixed bottom-12 top-auto translate-y-0 pt-4">
+      <DialogContent className="sm:max-w-[425px] fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-green-600 border-chingu-green-300 rounded-3xl [&>button]:text-chingu-green-100">
         <DialogHeader className="gap-4 flex flex-row items-center">
-          <div className="border rounded-full p-2 bg-secondary">
+          <div className="rounded-full p-2 bg-chingu-green-600">
             {countryData?.cca2 || countryData?.cca3 ? (
               <ReactCountryFlag
                 countryCode={countryData.cca2 || countryData.cca3}
@@ -50,31 +51,42 @@ export const CountryOverview = () => {
             ) : null}
           </div>
 
-          <DialogTitle className="text-left font-bold text-xl">
+          <DialogTitle className="text-left font-bold text-xl text-white">
             {selectedCountry}
           </DialogTitle>
         </DialogHeader>
 
-        <div>
+        <div className="text-white flex items-center gap-2">
           Number of Chingus:{' '}
-          {Object.keys(filters).length > 0
-            ? `${stats.summary.filtered} / ${stats.summary.total}`
-            : stats.summary.total}
+          {Object.keys(filters).length > 0 ? (
+            <span className="flex items-center gap-1 text-chingu-green-100 font-bold">
+              <Users size={16} strokeWidth={3} />
+              {stats.summary.filtered}
+              <span className="font-medium text-chingu-green-300">
+                / {stats.summary.total}
+              </span>
+            </span>
+          ) : (
+            <span className="flex items-center gap-2 text-chingu-green-100 font-bold">
+              <Users size={16} strokeWidth={3} />
+              {stats.summary.total}
+            </span>
+          )}
         </div>
         {Object.keys(filters).length > 0 ? (
-          <div>
-            <h5 className="font-semibold">Filters</h5>
+          <div className="flex flex-col gap-1">
+            <h5 className="font-semibold text-chingu-green-100">Filters</h5>
             <div className="flex gap-2">
               {Object.entries(filters).map(([filter, value]) => (
                 <Badge
                   key={filter}
-                  variant="outline"
                   onClick={() => clearFilter(filter)}
+                  className="text-white text-sm bg-chingu-green-400"
                 >
                   <span className="capitalize">
                     {value?.replace(/([a-z])([A-Z])/g, '$1 $2')}
                   </span>
-                  <X size={16} />
+                  <X size={12} />
                 </Badge>
               ))}
             </div>
@@ -88,7 +100,7 @@ export const CountryOverview = () => {
 
             return (
               <div key={category} className="flex flex-col">
-                <h4 className="capitalize font-semibold mb-1">
+                <h4 className="capitalize font-semibold mb-1 text-chingu-green-100">
                   {category.replace(/([a-z])([A-Z])/g, '$1 $2')}
                 </h4>
 
@@ -101,10 +113,14 @@ export const CountryOverview = () => {
                   return (
                     <div key={key} className="flex flex-col gap-1 mb-2">
                       <div className="flex flex-row justify-between">
-                        <p className="truncate">
-                          {key} <span>({val})</span>
+                        <p className="truncate text-white flex items-center gap-2">
+                          {key}{' '}
+                          <span className="flex items-center gap-2 text-chingu-green-200">
+                            <Users size={16} strokeWidth={3} />
+                            {val}
+                          </span>
                         </p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-white">
                           {percentOfFiltered.toFixed()}%
                         </p>
                       </div>
@@ -121,7 +137,7 @@ export const CountryOverview = () => {
         </div>
 
         <DialogFooter className="pt-8">
-          <Button className="flex grow bg-[#444]">View Chingus</Button>
+          {/* <Button className="flex grow bg-[#444]">View Chingus</Button> */}
         </DialogFooter>
       </DialogContent>
     </Dialog>
