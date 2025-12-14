@@ -21,7 +21,7 @@ export const Marker = ({ map, country, count }: MarkerProps) => {
 
     if (!coords) return;
 
-    const el = createMarkerElement(count);
+    const el = createMarkerElement(country, count);
 
     el.addEventListener('click', () => setSelectedCountry?.(country));
 
