@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex-1">
       <div className="absolute top-0 left-0 right-0 h-screen overflow-y-auto z-10 pointer-events-none flex justify-center">
-        <div className="w-full max-w-4xl px-4 pt-40 pb-10">
+        <div className="w-full max-w-4xl px-4 pt-40 pb-40">
           <Hero />
           <About />
         </div>

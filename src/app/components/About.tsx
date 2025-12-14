@@ -16,9 +16,11 @@ export const About = () => {
 
   return (
     <div className="flex flex-col items-center gap-5 w-full pointer-events-auto">
-      <Card className="flex flex-col gap-10 justify-start m-5 bg-black/60 border-0 backdrop-blur-md max-w-[600px] w-full">
+      <Card className="flex flex-col gap-10 justify-start m-5 bg-chingu-green-600/40 border-0 backdrop-blur-md max-w-[600px] w-full">
         <CardHeader>
-          <h3 className="text-4xl text-center text-white">About Chingu</h3>
+          <h3 className="text-3xl text-center text-white font-bold">
+            About Chingu
+          </h3>
         </CardHeader>
         <CardContent>
           <p className="text-center text-white">
@@ -29,13 +31,13 @@ export const About = () => {
         </CardContent>
         <CardAction className="self-center">
           <Link href="https://www.chingu.io/">
-            <Button className="rounded-full text-lg px-6 py-5 bg-gray-600 text-white self-center">
+            <Button className="rounded-full text-lg px-10 py-6 bg-transparent text-white self-center border-white border-2">
               Learn More
             </Button>
           </Link>
         </CardAction>
       </Card>
-      <Card className="flex flex-col gap-10 justify-start m-5 bg-black/60 border-0 backdrop-blur-md max-w-[600px] w-full">
+      <Card className="flex flex-col gap-10 justify-start m-5 bg-chingu-green-600/40 border-0 backdrop-blur-md max-w-[600px] w-full">
         <CardHeader>
           <h3 className="text-4xl text-center text-white">
             What is Chingu Demographic Map?
@@ -51,7 +53,7 @@ export const About = () => {
         <CardAction className="self-center">
           <Button
             onClick={showMapView}
-            className="rounded-full text-lg px-6 py-5 bg-gray-600 text-white"
+            className="rounded-full text-lg text-black px-10 py-6 bg-chingu-green-100"
           >
             Explore Now
           </Button>
