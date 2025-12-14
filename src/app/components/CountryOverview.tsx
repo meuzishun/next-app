@@ -13,7 +13,7 @@ import {
 import { Progress } from '@/components/ui/progress';
 import ReactCountryFlag from 'react-country-flag';
 import { getCountryData } from '@/lib/geo';
-import { X } from 'lucide-react';
+import { ChevronRight, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Users } from 'lucide-react';
 
@@ -36,8 +36,8 @@ export const CountryOverview = () => {
 
   return (
     <Dialog open={!!selectedCountry} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[425px] h-[75vh] flex flex-col fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-blue-600 border-chingu-blue-300 rounded-3xl [&>button]:text-chingu-blue-100">
-        <DialogHeader className="gap-4 flex flex-row items-center">
+      <DialogContent className="sm:max-w-[425px] h-[75vh] flex flex-col fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-blue-600 border-chingu-blue-300 rounded-3xl [&>button]:text-chingu-blue-100 px-0 gap-0">
+        <DialogHeader className="gap-4 flex flex-row items-center px-6 pb-2">
           <div className="rounded-full p-2 bg-chingu-green-600">
             {countryData?.cca2 || countryData?.cca3 ? (
               <ReactCountryFlag
@@ -56,7 +56,8 @@ export const CountryOverview = () => {
           </DialogTitle>
         </DialogHeader>
 
-        <div className="text-white flex items-center gap-2">
+        {/* Count summary */}
+        <div className="text-white flex items-center gap-2 px-6 bg-chingu-blue-500 py-2 border-b border-b-chingu-blue-400">
           Number of Chingus:{' '}
           {Object.keys(filters).length > 0 ? (
             <span className="flex items-center gap-1 text-chingu-green-100 font-bold">
@@ -72,9 +73,12 @@ export const CountryOverview = () => {
               {stats.summary.total}
             </span>
           )}
+          <ChevronRight className="text-chingu-blue-100 ml-auto" />
         </div>
+
+        {/* Filter summary */}
         {Object.keys(filters).length > 0 ? (
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 px-6 bg-chingu-green-600 border-b border-b-chingu-green-400 py-3">
             <h5 className="font-semibold text-chingu-green-100">Filters</h5>
             <div className="flex gap-2">
               {Object.entries(filters).map(([filter, value]) => (
@@ -92,7 +96,9 @@ export const CountryOverview = () => {
             </div>
           </div>
         ) : null}
-        <div className="flex gap-4 flex-col overflow-auto scrollbar-hide flex-1">
+
+        {/* Data breakdown */}
+        <div className="flex gap-4 flex-col overflow-auto scrollbar-hide flex-1 px-6 py-4">
           {Object.entries(stats.counts).map(([category, counts]) => {
             if (category in filters) return null;
             const hasAnyCounts = Object.values(counts).some((val) => val > 0);
@@ -138,11 +144,11 @@ export const CountryOverview = () => {
           })}
         </div>
 
-        <DialogFooter className="pt-8">
+        {/* <DialogFooter className="pt-8 px-6">
           <Button className="flex grow bg-chingu-blue-100 text-black rounded-full">
             View Chingus
           </Button>
-        </DialogFooter>
+        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );
