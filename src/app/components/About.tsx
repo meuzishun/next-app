@@ -39,7 +39,7 @@ export const About = () => {
       </Card>
       <Card className="flex flex-col gap-10 justify-start m-5 bg-chingu-green-600/40 border-0 backdrop-blur-md max-w-[600px] w-full">
         <CardHeader>
-          <h3 className="text-4xl text-center text-white">
+          <h3 className="text-3xl text-center text-white font-bold">
             What is Chingu Demographic Map?
           </h3>
         </CardHeader>
