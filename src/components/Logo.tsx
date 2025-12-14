@@ -6,14 +6,17 @@ function Logo() {
   const { showHomeView } = useUIView();
 
   return (
-    <Image
-      src="/images/logo.png"
-      alt="Logo"
-      width={100}
-      height={100}
-      loading="eager"
-      onClick={showHomeView}
-    />
+    <div className="flex flex-row justify-center items-center gap-2">
+      <Image
+        src="/images/logo.webp"
+        alt="Logo"
+        width={32}
+        height={32}
+        loading="eager"
+        onClick={showHomeView}
+      />
+      <p className="font-semibold text-2xl">Chingu</p>
+    </div>
   );
 }
 
