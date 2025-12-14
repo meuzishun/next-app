@@ -15,7 +15,7 @@ function Logo() {
         loading="eager"
         onClick={showHomeView}
       />
-      <p className="font-semibold text-2xl">Chingu</p>
+      <p className="font-semibold text-2xl text-white">Chingu</p>
     </div>
   );
 }
