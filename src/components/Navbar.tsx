@@ -15,23 +15,24 @@ export default function Navbar() {
       <NavigationMenuList className="gap-3">
         <NavigationMenuItem>
           <Button
-            variant="link"
             onClick={showHomeView}
-            className="px-4 text-xl"
+            className="px-4 text-xl text-white bg-transparent hover:bg-transparent"
           >
             Home
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Button variant="link" onClick={showMapView} className="px-4 text-xl">
+          <Button
+            onClick={showMapView}
+            className="px-4 text-xl text-white bg-transparent hover:bg-transparent"
+          >
             Map
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Button
-            variant="link"
             onClick={showListView}
-            className="px-4 text-xl"
+            className="px-4 text-xl text-white bg-transparent hover:bg-transparent"
           >
             List
           </Button>
