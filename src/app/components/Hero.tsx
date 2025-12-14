@@ -9,12 +9,12 @@ export const Hero = () => {
 
   return (
     <div className="flex flex-col gap-10 justify-start items-center mb-10 pointer-events-auto">
-      <h1 className="text-4xl text-center text-white md:mt-20 lg:mt-30">
+      <h1 className="text-4xl text-center text-white md:mt-20 lg:mt-30 font-bold">
         Find your fellow Chingus around the world
       </h1>
       <Button
         onClick={showMapView}
-        className="rounded-full text-lg px-6 py-5 bg-gray-600 text-white"
+        className="rounded-full text-lg text-black px-10 py-6 bg-chingu-green-100"
       >
         Explore Now
       </Button>
