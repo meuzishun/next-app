@@ -86,7 +86,7 @@ export const Filter = () => {
             hasActiveFilters
               ? 'bg-chingu-green-100 text-chingu-green-600'
               : 'bg-chingu-green-600 text-chingu-green-100'
-          }`}
+          } hover:bg-chingu-green-100 hover:text-chingu-green-600`}
         >
           <Settings2 className="rotate-90 -scale-y-100" />
         </Button>
