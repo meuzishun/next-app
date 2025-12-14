@@ -41,6 +41,31 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* custom colors */
+  --color-chingu-green-100: #0fe18b;
+  --color-chingu-green-200: #10b777;
+  --color-chingu-green-300: #108c64;
+  --color-chingu-green-400: #116250;
+  --color-chingu-green-500: #11373d;
+  --color-chingu-green-600: #122233;
+
+  --color-chingu-blue-100: #40b8f5;
+  --color-chingu-blue-200: #3796cc;
+  --color-chingu-blue-300: #2e74a3;
+  --color-chingu-blue-400: #24517b;
+  --color-chingu-blue-500: #1b2f52;
+  --color-chingu-blue-600: #171e3d;
+
+  --color-chingu-purple-100: #8d09f2;
+  --color-chingu-purple-200: #740aca;
+  --color-chingu-purple-300: #5c0ba2;
+  --color-chingu-purple-400: #430b79;
+  --color-chingu-purple-500: #2b0c51;
+  --color-chingu-purple-600: #1e0d3d;
+
+  --color-dark-bg: #080419;
+  --color-dark-text: #0a0a0f;
 }
 
 :root {
