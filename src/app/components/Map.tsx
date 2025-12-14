@@ -1,7 +1,6 @@
 'use client';
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl, { StyleSpecification } from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import { Marker } from './Marker';
 import { useSelectedCountry } from '@/stores/useSelectedCountry';
 import { getCountryData } from '@/lib/geo';
@@ -20,12 +19,14 @@ const calculateZoom = (area: number): number => {
 export const Map = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
+  const [currentZoom, setCurrentZoom] = useState(1.5);
   const { selectedCountry } = useSelectedCountry();
   const { currentView } = useUIView();
 
   const spinningRef = useRef(true);
   const animationFrameIdRef = useRef<number | null>(null);
   const lastTimeRef = useRef(0);
+  const [zoomThreshold, setZoomThreshold] = useState(0);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -103,23 +104,6 @@ export const Map = () => {
             'fill-outline-color': '#40b8f5',
           },
         },
-        {
-          id: 'country-labels',
-          type: 'symbol',
-          source: 'country-labels-source',
-          'source-layer': 'place_label',
-          filter: ['==', ['get', 'type'], 'country'],
-          layout: {
-            'text-field': ['get', 'name_en'],
-            'text-size': 12,
-          },
-          paint: {
-            'text-color': '#40b8f5',
-            'text-halo-color': '#171e3d',
-            'text-halo-width': 1,
-          },
-          minzoom: 1,
-        },
       ],
     };
 
@@ -151,6 +135,21 @@ export const Map = () => {
       m.remove();
     };
   }, []);
+
+  useEffect(() => {
+    if (!map) return;
+
+    const handleZoomChange = () => {
+      const zoom = map.getZoom();
+      setCurrentZoom(zoom);
+    };
+
+    map.on('zoomend', handleZoomChange);
+
+    return () => {
+      map.off('zoomend', handleZoomChange);
+    };
+  }, [map]);
 
   useEffect(() => {
     if (!map) return;
@@ -241,7 +240,13 @@ export const Map = () => {
       <div id="map-container" className="h-full w-full" ref={mapContainerRef} />
       {showMarkers &&
         Object.entries(countries).map(([country, count]) => (
-          <Marker key={country} map={map} country={country} count={count} />
+          <Marker
+            key={country}
+            map={map}
+            country={country}
+            count={count}
+            zoom={currentZoom}
+          />
         ))}
     </div>
   );
