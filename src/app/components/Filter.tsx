@@ -205,25 +205,25 @@ export const Filter = () => {
               }}
             >
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="all"
               >
                 All
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="tier 1"
               >
                 Tier 1
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="tier-2"
               >
                 Tier 2
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="tier-3"
               >
                 Tier 3
@@ -431,25 +431,25 @@ export const Filter = () => {
               }}
             >
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="all"
               >
                 All
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="tier 1"
               >
                 Tier 1
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="tier 2"
               >
                 Tier 2
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="tier 3"
               >
                 Tier 3
@@ -473,25 +473,25 @@ export const Filter = () => {
               }}
             >
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="all"
               >
                 All
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="male"
               >
                 Male
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="female"
               >
                 Female
               </ToggleGroupItem>
               <ToggleGroupItem
-                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                className="border-chingu-green-300 bg-chingu-green-400 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
                 value="other"
               >
                 Other
@@ -501,7 +501,7 @@ export const Filter = () => {
         </div>
         <DialogFooter className="flex flex-row sm:justify-evenly">
           <Button
-            className="flex-1 rounded-full bg-chingu-green-200 text-black"
+            className="flex-1 rounded-full bg-chingu-blue-100 text-black hover:bg-ching-blue-100 hover:text-black"
             onClick={handleFilterReset}
           >
             Clear Filters
@@ -509,7 +509,7 @@ export const Filter = () => {
           <DialogClose asChild>
             <Button
               type="submit"
-              className="flex-1 rounded-full bg-chingu-green-100 text-black"
+              className="flex-1 rounded-full bg-chingu-green-100 text-black hover:bg-chingu-green-100 hover:text-black"
               onClick={handleFilterSubmit}
             >
               Filter Now

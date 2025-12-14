@@ -147,11 +147,11 @@
 }
 
 .progress-track {
-  @apply bg-chingu-green-500;
+  @apply bg-chingu-blue-500;
 }
 
 .progress-track > div {
-  @apply bg-chingu-green-300;
+  @apply bg-chingu-blue-300;
 }
 
 @layer utilities {
