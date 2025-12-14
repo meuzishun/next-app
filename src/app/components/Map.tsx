@@ -26,7 +26,7 @@ export const Map = () => {
   const spinningRef = useRef(true);
   const animationFrameIdRef = useRef<number | null>(null);
   const lastTimeRef = useRef(0);
-  const [zoomThreshold, setZoomThreshold] = useState(0);
+  // const [zoomThreshold, setZoomThreshold] = useState(0);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;

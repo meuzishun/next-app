@@ -55,11 +55,7 @@ function getColor(count: number): string {
   return colorStops[0].color;
 }
 
-export function createMarkerElement(
-  country: string,
-  count: number,
-  zoom: number = 1.5
-) {
+export function createMarkerElement(country: string, count: number) {
   const el = document.createElement('div');
   const countCircle = document.createElement('div');
   const countText = document.createElement('p');

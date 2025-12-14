@@ -24,7 +24,7 @@ export const Marker = ({ map, country, count, zoom }: MarkerProps) => {
 
     if (!coords) return;
 
-    const el = createMarkerElement(country, count, zoom || 1.5);
+    const el = createMarkerElement(country, count);
     countryTextRef.current = el.querySelector(
       '[data-country-text]'
     ) as HTMLElement;
@@ -42,7 +42,7 @@ export const Marker = ({ map, country, count, zoom }: MarkerProps) => {
         countryTextRef.current = null;
       }
     };
-  }, [map, country, count, setSelectedCountry]);
+  }, [map, country, count, setSelectedCountry, zoom]);
 
   useEffect(() => {
     if (!countryTextRef.current || zoom === undefined) return;
