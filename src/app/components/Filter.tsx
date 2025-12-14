@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/select';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Button } from '@/components/ui/button';
-import { SlidersVertical } from 'lucide-react';
+import { Settings2 } from 'lucide-react';
 import { useState } from 'react';
 import { useFilterStore } from '@/stores/useFilterStore';
 import { useUIView } from '@/stores/useUIViewStore';
@@ -75,20 +75,33 @@ export const Filter = () => {
 
   if (currentView === 'home') return;
 
+  const hasActiveFilters = Object.keys(filters).length > 0;
+
   return (
     <Dialog onOpenChange={handleDialogOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="outline">
-          <SlidersVertical />
+        <Button
+          variant="outline"
+          className={`border-chingu-green-300 rounded-full w-10 h-10 p-0 ${
+            hasActiveFilters
+              ? 'bg-chingu-green-100 text-chingu-green-600'
+              : 'bg-chingu-green-600 text-chingu-green-100'
+          }`}
+        >
+          <Settings2 className="rotate-90 -scale-y-100" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-chingu-green-600 [&>button]:text-chingu-green-100 border-chingu-green-300">
         <DialogHeader>
-          <DialogTitle className="self-start">Filters</DialogTitle>
+          <DialogTitle className="self-start text-chingu-green-100">
+            Filters
+          </DialogTitle>
         </DialogHeader>
         <div className="grid gap-4">
           <div className="grid gap-3">
-            <Label htmlFor="role">Role</Label>
+            <Label htmlFor="role" className="text-white">
+              Role
+            </Label>
             <Select
               name="voyageRole"
               value={filterState.voyageRole}
@@ -99,20 +112,47 @@ export const Filter = () => {
                 }));
               }}
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full text-chingu-green-100 border-chingu-green-300">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All</SelectItem>
-                <SelectItem value="developer">Developer</SelectItem>
-                <SelectItem value="ui/ux designer">UI/UX Designer</SelectItem>
-                <SelectItem value="scrum master">Scrum Master</SelectItem>
-                <SelectItem value="Product Owner">Product Owner</SelectItem>
+              <SelectContent className="bg-chingu-green-600 text-chingu-green-100">
+                <SelectItem
+                  value="all"
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                >
+                  All
+                </SelectItem>
+                <SelectItem
+                  value="developer"
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                >
+                  Developer
+                </SelectItem>
+                <SelectItem
+                  value="ui/ux designer"
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                >
+                  UI/UX Designer
+                </SelectItem>
+                <SelectItem
+                  value="scrum master"
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                >
+                  Scrum Master
+                </SelectItem>
+                <SelectItem
+                  value="Product Owner"
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                >
+                  Product Owner
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="roleType">Role Type</Label>
+            <Label htmlFor="roleType" className="text-white">
+              Role Type
+            </Label>
             <Select
               name="roleType"
               value={filterState.roleType}
@@ -123,18 +163,35 @@ export const Filter = () => {
                 }));
               }}
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full text-chingu-green-100 border-chingu-green-300">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All</SelectItem>
-                <SelectItem value="python">Python</SelectItem>
-                <SelectItem value="web">Web</SelectItem>
+              <SelectContent className="bg-chingu-green-600 text-chingu-green-100">
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="all"
+                >
+                  All
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="python"
+                >
+                  Python
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="web"
+                >
+                  Web
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="soloProjectTier">Solo Project Tier</Label>
+            <Label htmlFor="soloProjectTier" className="text-white">
+              Solo Project Tier
+            </Label>
             <ToggleGroup
               type="single"
               value={filterState.soloProjectTier}
@@ -147,14 +204,36 @@ export const Filter = () => {
                 }));
               }}
             >
-              <ToggleGroupItem value="all">All</ToggleGroupItem>
-              <ToggleGroupItem value="tier 1">Tier 1</ToggleGroupItem>
-              <ToggleGroupItem value="tier-2">Tier 2</ToggleGroupItem>
-              <ToggleGroupItem value="tier-3">Tier 3</ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="all"
+              >
+                All
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="tier 1"
+              >
+                Tier 1
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="tier-2"
+              >
+                Tier 2
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="tier-3"
+              >
+                Tier 3
+              </ToggleGroupItem>
             </ToggleGroup>
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="voyage">Voyage</Label>
+            <Label htmlFor="voyage" className="text-white">
+              Voyage
+            </Label>
             <Select
               name="voyage"
               value={filterState.voyage}
@@ -165,43 +244,180 @@ export const Filter = () => {
                 }));
               }}
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full text-chingu-green-100 border-chingu-green-300">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All</SelectItem>
-                <SelectItem value="V33">V33</SelectItem>
-                <SelectItem value="V34">V34</SelectItem>
-                <SelectItem value="V35">V35</SelectItem>
-                <SelectItem value="V36">V36</SelectItem>
-                <SelectItem value="V37">V37</SelectItem>
-                <SelectItem value="V38">V38</SelectItem>
-                <SelectItem value="V39">V39</SelectItem>
-                <SelectItem value="V40">V40</SelectItem>
-                <SelectItem value="V41">V41</SelectItem>
-                <SelectItem value="V42">V42</SelectItem>
-                <SelectItem value="V43">V43</SelectItem>
-                <SelectItem value="V44">V44</SelectItem>
-                <SelectItem value="V45">V45</SelectItem>
-                <SelectItem value="V46">V46</SelectItem>
+              <SelectContent className="bg-chingu-green-600 text-chingu-green-100">
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="all"
+                >
+                  All
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V33"
+                >
+                  V33
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V34"
+                >
+                  V34
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V35"
+                >
+                  V35
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V36"
+                >
+                  V36
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V37"
+                >
+                  V37
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V38"
+                >
+                  V38
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V39"
+                >
+                  V39
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V40"
+                >
+                  V40
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V41"
+                >
+                  V41
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V42"
+                >
+                  V42
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V43"
+                >
+                  V43
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V44"
+                >
+                  V44
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V45"
+                >
+                  V45
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V46"
+                >
+                  V46
+                </SelectItem>
                 <SelectItem value="V47">V47</SelectItem>
-                <SelectItem value="V48">V48</SelectItem>
-                <SelectItem value="V49">V49</SelectItem>
-                <SelectItem value="V50">V50</SelectItem>
-                <SelectItem value="V51">V51</SelectItem>
-                <SelectItem value="V52">V52</SelectItem>
-                <SelectItem value="V53">V53</SelectItem>
-                <SelectItem value="V54">V54</SelectItem>
-                <SelectItem value="V55">V55</SelectItem>
-                <SelectItem value="V56">V56</SelectItem>
-                <SelectItem value="V57">V57</SelectItem>
-                <SelectItem value="V58">V58</SelectItem>
-                <SelectItem value="V59">V59</SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V48"
+                >
+                  V48
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V49"
+                >
+                  V49
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V50"
+                >
+                  V50
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V51"
+                >
+                  V51
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V52"
+                >
+                  V52
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V53"
+                >
+                  V53
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V54"
+                >
+                  V54
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V55"
+                >
+                  V55
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V56"
+                >
+                  V56
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V57"
+                >
+                  V57
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V58"
+                >
+                  V58
+                </SelectItem>
+                <SelectItem
+                  className="focus:bg-chingu-green-500 focus:text-chingu-green-100"
+                  value="V59"
+                >
+                  V59
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="voyageTier">Voyage Tier</Label>
+            <Label htmlFor="voyageTier" className="text-white">
+              Voyage Tier
+            </Label>
             <ToggleGroup
               type="single"
               value={filterState.voyageTier}
@@ -214,14 +430,36 @@ export const Filter = () => {
                 }));
               }}
             >
-              <ToggleGroupItem value="all">All</ToggleGroupItem>
-              <ToggleGroupItem value="tier 1">Tier 1</ToggleGroupItem>
-              <ToggleGroupItem value="tier 2">Tier 2</ToggleGroupItem>
-              <ToggleGroupItem value="tier 3">Tier 3</ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="all"
+              >
+                All
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="tier 1"
+              >
+                Tier 1
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="tier 2"
+              >
+                Tier 2
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="tier 3"
+              >
+                Tier 3
+              </ToggleGroupItem>
             </ToggleGroup>
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="gender">Gender</Label>
+            <Label htmlFor="gender" className="text-white">
+              Gender
+            </Label>
             <ToggleGroup
               type="single"
               value={filterState.gender}
@@ -234,17 +472,36 @@ export const Filter = () => {
                 }));
               }}
             >
-              <ToggleGroupItem value="all">All</ToggleGroupItem>
-              <ToggleGroupItem value="male">Male</ToggleGroupItem>
-              <ToggleGroupItem value="female">Female</ToggleGroupItem>
-              <ToggleGroupItem value="other">Other</ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="all"
+              >
+                All
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="male"
+              >
+                Male
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="female"
+              >
+                Female
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                className="border-chingu-green-300 text-chingu-green-100 data-[state=on]:bg-chingu-green-100 data-[state=on]:text-chingu-green-600 hover:bg-chingu-green-500 hover:text-chingu-green-100"
+                value="other"
+              >
+                Other
+              </ToggleGroupItem>
             </ToggleGroup>
           </div>
         </div>
         <DialogFooter className="flex flex-row sm:justify-evenly">
           <Button
-            variant="outline"
-            className="flex-1 rounded-full"
+            className="flex-1 rounded-full bg-chingu-green-200 text-black"
             onClick={handleFilterReset}
           >
             Clear Filters
@@ -252,7 +509,7 @@ export const Filter = () => {
           <DialogClose asChild>
             <Button
               type="submit"
-              className="flex-1 rounded-full"
+              className="flex-1 rounded-full bg-chingu-green-100 text-black"
               onClick={handleFilterSubmit}
             >
               Filter Now
