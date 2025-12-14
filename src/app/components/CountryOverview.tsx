@@ -36,7 +36,7 @@ export const CountryOverview = () => {
 
   return (
     <Dialog open={!!selectedCountry} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[425px] h-[75vh] flex flex-col fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-green-600 border-chingu-green-300 rounded-3xl [&>button]:text-chingu-green-100">
+      <DialogContent className="sm:max-w-[425px] h-[75vh] flex flex-col fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-blue-600 border-chingu-blue-300 rounded-3xl [&>button]:text-chingu-blue-100">
         <DialogHeader className="gap-4 flex flex-row items-center">
           <div className="rounded-full p-2 bg-chingu-green-600">
             {countryData?.cca2 || countryData?.cca3 ? (
@@ -100,7 +100,7 @@ export const CountryOverview = () => {
 
             return (
               <div key={category} className="flex flex-col">
-                <h4 className="capitalize font-semibold mb-1 text-chingu-green-100">
+                <h4 className="capitalize font-semibold mb-1 text-chingu-blue-100">
                   {category.replace(/([a-z])([A-Z])/g, '$1 $2')}
                 </h4>
 
@@ -139,7 +139,7 @@ export const CountryOverview = () => {
         </div>
 
         <DialogFooter className="pt-8">
-          <Button className="flex grow bg-chingu-green-200 text-black rounded-full">
+          <Button className="flex grow bg-chingu-blue-100 text-black rounded-full">
             View Chingus
           </Button>
         </DialogFooter>
