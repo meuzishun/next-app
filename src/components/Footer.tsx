@@ -1,5 +1,6 @@
 import { Github } from 'lucide-react';
 import Link from 'next/link';
+import { TeamMembers } from './ui/team-members';
 
 export default function Footer() {
   return (
@@ -12,6 +13,8 @@ export default function Footer() {
           <p>Repo</p>
         </div>
       </Link>
+      <p>|</p>
+      <TeamMembers />
     </footer>
   );
 }
