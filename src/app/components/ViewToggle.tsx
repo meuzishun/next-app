@@ -13,7 +13,7 @@ export const ViewToggle = () => {
   if (currentView === 'home') return;
 
   return (
-    <label className="flex items-center w-16 h-8 cursor-pointer select-none bg-dark-bg border border-chingu-green-300 rounded-full p-0.5 absolute top-30 z-20 left-1/2 -translate-x-1/2">
+    <label className="flex items-center w-16 h-8 cursor-pointer select-none bg-dark-bg border border-chingu-green-300 rounded-full p-0.5 absolute top-15 z-20 left-1/2 -translate-x-1/2">
       {/* The checkbox */}
       <input
         type="checkbox"
