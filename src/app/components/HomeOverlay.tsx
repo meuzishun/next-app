@@ -15,10 +15,11 @@ export const HomeOverlay = () => {
       style={{
         WebkitOverflowScrolling: 'touch',
         overflowY: 'auto',
-        height: '100vh', // <- critical for iOS
+        height: '100vh', // iOS-safe
       }}
     >
-      <div className="w-full max-w-4xl px-4 pt-40 pb-40 flex flex-col gap-10 items-center">
+      {/* Centered wrapper */}
+      <div className="flex flex-col items-center justify-start min-h-full w-full px-4 py-20">
         <Hero />
         <About />
       </div>
