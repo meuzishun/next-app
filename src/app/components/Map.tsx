@@ -26,10 +26,11 @@ export const Map = () => {
   const spinningRef = useRef(true);
   const animationFrameIdRef = useRef<number | null>(null);
   const lastTimeRef = useRef(0);
-  // const [zoomThreshold, setZoomThreshold] = useState(0);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
+
+    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN as string;
 
     const mapStyle: StyleSpecification = {
       version: 8,
@@ -71,50 +72,37 @@ export const Map = () => {
           type: 'vector',
           url: 'mapbox://mapbox.country-boundaries-v1',
         },
-        'country-labels-source': {
-          type: 'vector',
-          url: 'mapbox://mapbox.mapbox-streets-v8',
-        },
       },
       layers: [
         {
           id: 'background',
           type: 'background',
-          paint: {
-            'background-color': '#171e3d',
-            'background-pattern': 'dots-large',
-          },
+          paint: { 'background-color': '#171e3d' },
         },
         {
           id: 'water',
           type: 'fill',
           source: 'mapbox-streets',
           'source-layer': 'water',
-          paint: {
-            'fill-color': '#1b2f52',
-          },
+          paint: { 'fill-color': '#1b2f52' },
         },
         {
           id: 'country-boundaries',
           type: 'fill',
           source: 'mapbox-countries',
           'source-layer': 'country_boundaries',
-          paint: {
-            'fill-color': '#171e3d',
-            'fill-outline-color': '#40b8f5',
-          },
+          paint: { 'fill-color': '#171e3d', 'fill-outline-color': '#40b8f5' },
         },
       ],
     };
 
-    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN as string;
     const m = new mapboxgl.Map({
-      container: mapContainerRef.current as HTMLElement,
+      container: mapContainerRef.current,
+      style: mapStyle,
       center: [0, 90],
+      zoom: 1.5,
       pitch: 70,
       bearing: 0,
-      zoom: 1.5,
-      style: mapStyle,
       projection: 'globe',
     });
 
@@ -129,28 +117,40 @@ export const Map = () => {
     setMap(m);
 
     return () => {
-      if (animationFrameIdRef.current !== null) {
+      if (animationFrameIdRef.current)
         cancelAnimationFrame(animationFrameIdRef.current);
-      }
       m.remove();
     };
   }, []);
 
+  // Enable / disable map interactions based on currentView
   useEffect(() => {
     if (!map) return;
 
-    const handleZoomChange = () => {
-      const zoom = map.getZoom();
-      setCurrentZoom(zoom);
+    const disable = () => {
+      map.scrollZoom.disable();
+      map.boxZoom.disable();
+      map.dragRotate.disable();
+      map.dragPan.disable();
+      map.keyboard.disable();
+      map.doubleClickZoom.disable();
+      map.touchZoomRotate.disable();
     };
 
-    map.on('zoomend', handleZoomChange);
-
-    return () => {
-      map.off('zoomend', handleZoomChange);
+    const enable = () => {
+      map.scrollZoom.enable();
+      map.boxZoom.enable();
+      map.dragRotate.enable();
+      map.dragPan.enable();
+      map.keyboard.enable();
+      map.doubleClickZoom.enable();
+      map.touchZoomRotate.enable();
     };
-  }, [map]);
 
+    currentView === 'home' ? disable() : enable();
+  }, [map, currentView]);
+
+  // Spin logic
   useEffect(() => {
     if (!map) return;
 
@@ -187,16 +187,12 @@ export const Map = () => {
       });
 
       setTimeout(() => {
-        if (spinningRef.current) {
-          rotateGlobe(0);
-        }
+        if (spinningRef.current) rotateGlobe(0);
       }, 2100);
     } else {
       spinningRef.current = false;
-      if (animationFrameIdRef.current !== null) {
+      if (animationFrameIdRef.current)
         cancelAnimationFrame(animationFrameIdRef.current);
-        animationFrameIdRef.current = null;
-      }
 
       setTimeout(() => {
         map.flyTo({
@@ -210,34 +206,22 @@ export const Map = () => {
     }
   }, [map, currentView]);
 
+  // Fly to selected country
   useEffect(() => {
     if (!map || !selectedCountry) return;
-
     const countryData = getCountryData(selectedCountry);
-
-    if (!countryData) return;
-
-    const { area, latlng } = countryData;
-
-    if (!latlng) return;
-
-    const [lat, lng] = latlng;
-
-    const zoom = countryData ? calculateZoom(area) : 3;
-
-    map.flyTo({
-      center: [lng, lat],
-      essential: true,
-      zoom,
-    });
+    if (!countryData || !countryData.latlng) return;
+    const [lat, lng] = countryData.latlng;
+    const zoom = calculateZoom(countryData.area);
+    map.flyTo({ center: [lng, lat], zoom, essential: true });
   }, [map, selectedCountry]);
 
   const { countries } = useChinguStats();
   const showMarkers = currentView !== 'home';
 
   return (
-    <div className="relative h-full w-full">
-      <div id="map-container" className="h-full w-full" ref={mapContainerRef} />
+    <div className="h-full w-full">
+      <div ref={mapContainerRef} className="h-full w-full" />
       {showMarkers &&
         Object.entries(countries).map(([country, count]) => (
           <Marker

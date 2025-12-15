@@ -1,14 +1,15 @@
 'use client';
+
 import { Button } from '@/components/ui/button';
 import { useUIView } from '@/stores/useUIViewStore';
 
 export const Hero = () => {
   const { currentView, showMapView } = useUIView();
 
-  if (currentView !== 'home') return;
+  if (currentView !== 'home') return null;
 
   return (
-    <div className="flex flex-col gap-10 justify-start items-center mb-10 pointer-events-auto">
+    <div className="flex flex-col gap-10 justify-start items-center mb-10">
       <h1 className="text-4xl text-center text-white md:mt-20 lg:mt-30 font-bold">
         Find your fellow Chingus around the world
       </h1>
