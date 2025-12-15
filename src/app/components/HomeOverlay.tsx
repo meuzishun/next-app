@@ -11,16 +11,14 @@ export const HomeOverlay = () => {
 
   return (
     <div
-      className="
-        fixed inset-0 z-10
-        overflow-y-auto
-        flex justify-center
-        pointer-events-none
-        overscroll-contain
-      "
-      style={{ WebkitOverflowScrolling: 'touch' }}
+      className="fixed inset-0 z-10 pointer-events-auto overscroll-contain"
+      style={{
+        WebkitOverflowScrolling: 'touch',
+        overflowY: 'auto',
+        height: '100vh', // <- critical for iOS
+      }}
     >
-      <div className="w-full max-w-4xl px-4 pt-40 pb-40 pointer-events-auto">
+      <div className="w-full max-w-4xl px-4 pt-40 pb-40 flex flex-col gap-10 items-center">
         <Hero />
         <About />
       </div>
