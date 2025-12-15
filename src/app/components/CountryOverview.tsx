@@ -17,6 +17,7 @@ import { Users } from 'lucide-react';
 import { useState } from 'react';
 import { useFilteredChingus } from '@/hooks/useFilteredChingus';
 import { VirtualizedChinguList } from './VirtualizedChinguList';
+import { Filter } from './Filter';
 
 export const CountryOverview = () => {
   const { selectedCountry, setSelectedCountry } = useSelectedCountry();
@@ -45,22 +46,27 @@ export const CountryOverview = () => {
     <Dialog open={!!selectedCountry} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-[425px] h-[75vh] flex flex-col fixed bottom-12 top-auto translate-y-0 pt-4 bg-chingu-blue-600 border-chingu-blue-300 rounded-3xl [&>button]:text-chingu-blue-100 px-0 gap-0">
         <DialogHeader className="gap-4 flex flex-row items-center px-6 pb-2">
-          <div className="rounded-full p-2 bg-chingu-green-600">
-            {countryData?.cca2 || countryData?.cca3 ? (
-              <ReactCountryFlag
-                countryCode={countryData.cca2 || countryData.cca3}
-                svg
-                style={{
-                  fontSize: '1.8rem',
-                  lineHeight: '1.8rem',
-                }}
-              />
-            ) : null}
-          </div>
+          <div className="flex items-center space-x-3">
+            <div className="rounded-full p-2 bg-chingu-green-600">
+              {countryData?.cca2 || countryData?.cca3 ? (
+                <ReactCountryFlag
+                  countryCode={countryData.cca2 || countryData.cca3}
+                  svg
+                  style={{
+                    fontSize: '1.8rem',
+                    lineHeight: '1.8rem',
+                  }}
+                />
+              ) : null}
+            </div>
 
-          <DialogTitle className="text-left font-bold text-xl text-white">
-            {selectedCountry}
-          </DialogTitle>
+            <DialogTitle className="text-left font-bold text-xl text-white">
+              {selectedCountry}
+            </DialogTitle>
+            <div className="scale-75 origin-right">
+              <Filter />
+            </div>
+          </div>
         </DialogHeader>
 
         {/* Count summary */}
